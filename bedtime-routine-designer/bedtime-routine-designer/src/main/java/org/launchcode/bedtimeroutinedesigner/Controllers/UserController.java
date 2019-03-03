@@ -1,7 +1,9 @@
 package org.launchcode.bedtimeroutinedesigner.Controllers;
 
+import org.launchcode.bedtimeroutinedesigner.Models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,8 +18,8 @@ public class UserController {
     }
 
     @RequestMapping(value="add", method=RequestMethod.POST)
-    public String processAddUserForm(Model model){
-
+    public String processAddUserForm(Model model, @ModelAttribute User user, String verify){
+        model.addAttribute("username", user.getUsername());
         return "index";
 
         }

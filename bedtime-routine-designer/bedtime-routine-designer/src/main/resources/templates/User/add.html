@@ -8,6 +8,7 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
+<form method="post">
 <div>
     <label for="username">Username: </label>
     <input type="text" name="username" id="username" />
@@ -24,6 +25,10 @@
     <label for="verify">Verify Password: </label>
     <input type="password" name="verify" id="verify" />
 </div>
+<div>
+    <input type="submit" value="Sign Up" />
+</div>
+</form>
 
 </body>
 </html>

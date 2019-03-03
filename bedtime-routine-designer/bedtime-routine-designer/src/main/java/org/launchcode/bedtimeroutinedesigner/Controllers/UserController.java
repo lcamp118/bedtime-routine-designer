@@ -3,6 +3,7 @@ package org.launchcode.bedtimeroutinedesigner.Controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
@@ -14,5 +15,11 @@ public class UserController {
         return "user/add";
     }
 
+    @RequestMapping(value="add", method=RequestMethod.POST)
+    public String processAddUserForm(Model model){
 
-}
+        return "index";
+
+        }
+
+        }

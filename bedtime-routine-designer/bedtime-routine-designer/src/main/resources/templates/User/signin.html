@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<h3>Sign in | New User? Please <a href="/user/signup"> Sign Up</a></h3>
+
+<form method="post">
+    <div class="form-group">
+        <label for="userEmail">Email:</label>
+        <input class="form-control" type="email" name="userEmail" id="userEmail" />
+    </div>
+    <div>
+        <label for="userPassword">Password:</label>
+        <input class="form-control" type="password" name="userPassword" id="userPassword" />
+    </div>
+    <div>
+        <input type="submit" value="Sign In" />
+    </div>
+</form>
+
+</body>
+</html>

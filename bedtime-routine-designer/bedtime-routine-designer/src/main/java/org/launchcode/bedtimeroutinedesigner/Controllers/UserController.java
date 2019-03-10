@@ -19,19 +19,31 @@ public class UserController {
 
     @RequestMapping(value="/", method=RequestMethod.POST)
     public String login(Model model) {
-        return "redirect:user/add";
+        return "redirect:user/signup";
     }
 
-    @RequestMapping(value="user/add")
+
+
+    @RequestMapping(value="user/signup")
     public String displayAddUserForm(Model model){
-        return "user/add";
+        return "user/signup";
     }
 
-    @RequestMapping(value="add", method=RequestMethod.POST)
+    @RequestMapping(value="user/signup", method=RequestMethod.POST)
     public String processAddUserForm(Model model, @ModelAttribute User user, String verify){
         model.addAttribute("username", user.getUsername());
-        return "user/index";
+        return "user/index"; }
 
-        }
 
-        }
+
+    @RequestMapping(value="user/signin", method=RequestMethod.GET)
+    public String displayUserSignin(Model model){
+        return "user/signin";
+    }
+
+    @RequestMapping(value="user/signin", method=RequestMethod.POST)
+    public String processUserSignin(Model model, @ModelAttribute User user, String verify){
+        //if errors display sign in form again
+        return "redirect:routine/index";
+    }
+}

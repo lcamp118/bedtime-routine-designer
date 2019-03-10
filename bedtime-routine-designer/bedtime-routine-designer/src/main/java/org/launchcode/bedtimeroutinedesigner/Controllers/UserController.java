@@ -12,12 +12,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class UserController {
 
-    @RequestMapping(value="/")
+    @RequestMapping(value="/", method=RequestMethod.GET)
     public String main(Model model) {
         return "index";
     }
 
-    @RequestMapping(value="add")
+    @RequestMapping(value="/", method=RequestMethod.POST)
+    public String login(Model model) {
+        return "redirect:user/add";
+    }
+
+    @RequestMapping(value="user/add")
     public String displayAddUserForm(Model model){
         return "user/add";
     }

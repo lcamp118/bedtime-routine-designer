@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-@RequestMapping("user")
+@RequestMapping("/")
 public class UserController {
+
+    @RequestMapping(value="/")
+    public String main(Model model) {
+        return "index";
+    }
 
     @RequestMapping(value="add")
     public String displayAddUserForm(Model model){
@@ -20,7 +25,7 @@ public class UserController {
     @RequestMapping(value="add", method=RequestMethod.POST)
     public String processAddUserForm(Model model, @ModelAttribute User user, String verify){
         model.addAttribute("username", user.getUsername());
-        return "index";
+        return "user/index";
 
         }
 

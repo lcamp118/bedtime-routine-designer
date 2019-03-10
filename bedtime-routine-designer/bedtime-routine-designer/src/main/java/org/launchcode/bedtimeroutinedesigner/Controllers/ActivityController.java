@@ -7,4 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("activity")
 public class ActivityController {
 
+    //#TODO display all activities
+
 }

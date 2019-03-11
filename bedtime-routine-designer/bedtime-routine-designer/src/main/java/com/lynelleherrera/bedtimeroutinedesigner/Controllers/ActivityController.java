@@ -1,4 +1,4 @@
-package org.launchcode.bedtimeroutinedesigner.Controllers;
+package com.lynelleherrera.bedtimeroutinedesigner.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

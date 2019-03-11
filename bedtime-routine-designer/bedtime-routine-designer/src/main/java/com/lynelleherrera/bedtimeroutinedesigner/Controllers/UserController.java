@@ -1,6 +1,6 @@
-package org.launchcode.bedtimeroutinedesigner.Controllers;
+package com.lynelleherrera.bedtimeroutinedesigner.Controllers;
 
-import org.launchcode.bedtimeroutinedesigner.Models.User;
+import com.lynelleherrera.bedtimeroutinedesigner.Models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UserController {
 
     @RequestMapping(value="/", method=RequestMethod.GET)
-    public String main(Model model) {
+    public String landingPage (Model model) {
         return "index";
     }
 
@@ -24,15 +24,16 @@ public class UserController {
 
 
 
-    @RequestMapping(value="user/signup")
+    @RequestMapping(value="user/signup", method=RequestMethod.GET)
     public String displayAddUserForm(Model model){
         return "user/signup";
     }
 
     @RequestMapping(value="user/signup", method=RequestMethod.POST)
     public String processAddUserForm(Model model, @ModelAttribute User user, String verify){
+        //TODO add validation annotations
         model.addAttribute("username", user.getUsername());
-        return "user/index"; }
+        return "routine/index"; }
 
 
 
@@ -43,7 +44,8 @@ public class UserController {
 
     @RequestMapping(value="user/signin", method=RequestMethod.POST)
     public String processUserSignin(Model model, @ModelAttribute User user, String verify){
+        //TODO add validation annotations
         //if errors display sign in form again
-        return "redirect:routine/index";
+        return "routine/index";
     }
 }

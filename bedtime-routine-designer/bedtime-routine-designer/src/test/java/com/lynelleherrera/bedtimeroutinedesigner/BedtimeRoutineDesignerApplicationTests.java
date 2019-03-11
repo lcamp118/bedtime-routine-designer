@@ -1,4 +1,4 @@
-package org.launchcode.bedtimeroutinedesigner;
+package com.lynelleherrera.bedtimeroutinedesigner;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

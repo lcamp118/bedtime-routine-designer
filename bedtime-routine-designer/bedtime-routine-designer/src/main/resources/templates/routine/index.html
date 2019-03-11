@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="fragments :: head"></head>
+
 <body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<p>Here is where routines will display</p>
+<p th:unless="${routines} and ${routines.size()}">No Routines Yet!! Get Started Below.</p>
+
+
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+    </tr>
+
+    <tr th:each="routine : ${routines}">
+        <td th:text="${routine.name}"></td>
+    </tr>
+
+</table>
+
+<a href="/routine/add">Add</a> |
+<a href="/routine/remove">Remove</a>
 
 </body>
 </html>

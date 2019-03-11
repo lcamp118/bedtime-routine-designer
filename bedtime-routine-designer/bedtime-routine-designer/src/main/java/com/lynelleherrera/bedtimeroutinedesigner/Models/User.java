@@ -1,4 +1,4 @@
-package org.launchcode.bedtimeroutinedesigner.Models;
+package com.lynelleherrera.bedtimeroutinedesigner.Models;
 
 public class User {
 

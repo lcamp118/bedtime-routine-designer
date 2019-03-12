@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post">
+    <div class="form-group">
+        <label for="routineTitle">Title: </label>
+        <input class="form-control" type="text" name="routineTitle" id="routineTitle" />
+    </div>
+    <div class="form-group">
+        <label for="activity">Add Activities</label>
+        <input class="form-control" type="text" name="activity" id="activity" />
+    </div>
+    <div class="form-group">
+        <label for="bedtime">I want bedtime to start at </label>
+        <input class="form-control" type="text" name="bedtime" id="bedtime"/>
+    </div>
+    <div>
+        <input type="submit" value="Create Routine" />
+    </div>
+</form>
 
 </body>
 </html>

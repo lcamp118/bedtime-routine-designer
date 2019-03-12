@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<p th:unless="${activities} and ${activities.size()}">No Activities Yet!! Add Some Below.</p>
+
+
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+        <th>Duration</th>
+    </tr>
+
+    <tr th:each="activity : ${activities}">
+        <td th:text="${activity.name}"></td>
+    </tr>
+
+    <tr th:each="activity : ${activities}">
+        <td th:text="${activity.duration}"></td>
+    </tr>
+
+</table>
+
+<a href="/activity/add">Add</a> |
+<a href="/activity/remove">Remove</a>
+
+
+</body>
+</html>

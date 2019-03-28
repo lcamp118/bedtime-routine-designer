@@ -8,17 +8,23 @@ public class Activity {
 
     //@Id
     //@GeneratedValue
-    //private int id;
+    private int activityId;
 
     private String name;
     private int duration;
+    private static int nextId = 1;
 
 
 
     public Activity(String name, int duration) {
-        //this();
+        this();
         this.name = name;
         this.duration = duration;
+    }
+
+    public Activity() {
+        activityId = nextId;
+        nextId ++;
     }
 
     //public Activity (){ }
@@ -26,6 +32,15 @@ public class Activity {
     //public int getId() {
     //    return id;
     //}
+
+
+    public int getActivityId() {
+        return activityId;
+    }
+
+    public void setActivityId(int activityId) {
+        this.activityId = activityId;
+    }
 
     public String getName() {
         return name;

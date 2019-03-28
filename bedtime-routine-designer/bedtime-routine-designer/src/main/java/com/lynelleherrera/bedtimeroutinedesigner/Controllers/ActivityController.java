@@ -3,6 +3,7 @@ package com.lynelleherrera.bedtimeroutinedesigner.Controllers;
 import com.lynelleherrera.bedtimeroutinedesigner.Models.Activity;
 //import com.lynelleherrera.bedtimeroutinedesigner.Models.Data.ActivityDao;
 //import org.springframework.beans.factory.annotation.Autowired;
+import com.lynelleherrera.bedtimeroutinedesigner.Models.ActivityData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 //import org.springframework.validation.Errors;
@@ -21,12 +22,12 @@ public class ActivityController {
     //@Autowired
     //private ActivityDao activityDao;
 
-    static ArrayList<Activity> activities = new ArrayList<>();
+
 
     @RequestMapping(value="/", method= RequestMethod.GET)
     public String displayActivities(Model model){
         model.addAttribute("title", "All Activities");
-        model.addAttribute("activities", activities);
+        model.addAttribute("activities", ActivityData.getAll());
         //model.addAttribute("activities", activityDao.findAll());
 
         return "activity/index";
@@ -45,10 +46,10 @@ public class ActivityController {
         //activityDao.save(newActivity);
 
         Activity newActivity = new Activity(activityName, duration);
-        activities.add(newActivity);
+        ActivityData.add(newActivity);
 
         model.addAttribute("title", "Add Activity");
-        model.addAttribute("activities", activities);
+        model.addAttribute("activities", ActivityData.getAll());
 
         return "activity/index";
     }

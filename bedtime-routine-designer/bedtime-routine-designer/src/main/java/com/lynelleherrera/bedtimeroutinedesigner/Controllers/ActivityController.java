@@ -8,11 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 //import org.springframework.validation.Errors;
 //import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 //import javax.validation.Valid;
+import javax.validation.Valid;
 import java.util.ArrayList;
 
 @Controller
@@ -36,22 +39,23 @@ public class ActivityController {
     @RequestMapping(value="add", method=RequestMethod.GET)
     public String addActivities(Model model){
         model.addAttribute("title", "Add Activity");
-        //model.addAttribute(new Activity());
+        model.addAttribute(new Activity());
         return "activity/add";
     }
 
     @RequestMapping(value="add", method=RequestMethod.POST)
-    public String processAddActivitiesForm(@RequestParam String activityName, @RequestParam int duration, Model model){
+    public String processAddActivitiesForm(@ModelAttribute @Valid Activity newActivity, Errors errors, Model model){
 
         //activityDao.save(newActivity);
 
-        Activity newActivity = new Activity(activityName, duration);
+        if (errors.hasErrors()){
+            model.addAttribute("title", "Add Activity");
+            return "activity/add";
+        }
+
         ActivityData.add(newActivity);
 
-        model.addAttribute("title", "Add Activity");
-        model.addAttribute("activities", ActivityData.getAll());
-
-        return "activity/index";
+        return "redirect:";
     }
 
 }

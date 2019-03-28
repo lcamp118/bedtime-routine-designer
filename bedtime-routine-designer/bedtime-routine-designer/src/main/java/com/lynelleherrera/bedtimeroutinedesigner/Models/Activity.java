@@ -3,6 +3,10 @@ package com.lynelleherrera.bedtimeroutinedesigner.Models;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.Id;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 //@Entity
 public class Activity {
 
@@ -10,8 +14,14 @@ public class Activity {
     //@GeneratedValue
     private int activityId;
 
+    @NotNull
+    @Size(min=3, max=15)
     private String name;
+
+    @NotNull
+    @Max(60)
     private int duration;
+
     private static int nextId = 1;
 
 

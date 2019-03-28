@@ -1,24 +1,31 @@
 package com.lynelleherrera.bedtimeroutinedesigner.Models;
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.Id;
 
+//@Entity
 public class Activity {
+
+    //@Id
+    //@GeneratedValue
+    //private int id;
 
     private String name;
     private int duration;
-    private int activityId;
-    private static int nextId = 1;
 
-    public Activity(String name, int duration, int activityId) {
-        this();
+
+
+    public Activity(String name, int duration) {
+        //this();
         this.name = name;
         this.duration = duration;
-        this.activityId = activityId;
     }
 
-    public Activity (){
+    //public Activity (){ }
 
-        activityId = nextId;
-        nextId++;
-    }
+    //public int getId() {
+    //    return id;
+    //}
 
     public String getName() {
         return name;
@@ -36,11 +43,4 @@ public class Activity {
         this.duration = duration;
     }
 
-    public int getActivityId() {
-        return activityId;
-    }
-
-    public void setActivityId(int activityId) {
-        this.activityId = activityId;
-    }
 }

@@ -3,9 +3,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class Activity {
@@ -22,7 +24,8 @@ public class Activity {
     @Max(60)
     private int duration;
 
-
+    @ManyToMany(mappedBy = "activities")
+    private List<Routine> routines;
 
     public Activity(String name, int duration) {
         this.name = name;

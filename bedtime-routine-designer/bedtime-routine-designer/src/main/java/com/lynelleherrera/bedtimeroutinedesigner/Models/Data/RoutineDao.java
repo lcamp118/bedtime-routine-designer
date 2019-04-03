@@ -1,7 +1,7 @@
 package com.lynelleherrera.bedtimeroutinedesigner.Models.Data;
 
-import com.lynelleherrera.bedtimeroutinedesigner.Models.Activity;
+import com.lynelleherrera.bedtimeroutinedesigner.Models.Routine;
 import org.springframework.data.repository.CrudRepository;
 
-public interface RoutineDao extends CrudRepository<Activity, Integer> {
+public interface RoutineDao extends CrudRepository<Routine, Integer> {
 }

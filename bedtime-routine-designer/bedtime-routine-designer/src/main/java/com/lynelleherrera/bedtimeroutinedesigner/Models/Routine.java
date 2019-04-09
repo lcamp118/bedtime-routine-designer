@@ -1,9 +1,6 @@
 package com.lynelleherrera.bedtimeroutinedesigner.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -24,10 +21,21 @@ public class Routine {
     @Max(24)
     private int bedtime;
 
+    @ManyToOne
+    private User user;
+
     @ManyToMany
     private List<Activity> activities;
 
     public Routine (){ }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     private void addActivity(Activity task) {
         activities.add(task);

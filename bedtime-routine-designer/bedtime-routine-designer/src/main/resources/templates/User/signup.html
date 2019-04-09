@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Title</title>
 </head>
 <body>
@@ -9,26 +9,26 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 <h3>Create Account | Existing User? Please <a href="/user/signin">Sign In</a></h3>
-<form method="post">
+<form method="post" th:object="${user}">
 <div class="form-group">
-    <label for="firstName">First Name: </label>
-    <input class="form-control" type="text" name="firstName" id="firstName" />
+    <label th:for="firstName">First Name: </label>
+    <input class="form-control" th:field="*{firstName}" />
 </div>
     <div class="form-group">
-    <label for="lastName">Last Name: </label>
-    <input class="form-control" type="text" name="lastName" id="lastName" />
+    <label th:for="lastName">Last Name: </label>
+    <input class="form-control" th:field="*{lastName}" />
 </div>
 <div class="form-group">
-    <label for="email">Email: </label>
-    <input class="form-control" type="email" name="email" id="email" />
+    <label th:for="email">Email: </label>
+    <input class="form-control" th:field="*{email}" />
 </div>
 <div class="form-group">
-    <label for="password">Password: </label>
-    <input class="form-control" type="password" name="password" id="password" />
+    <label th:for="password">Password: </label>
+    <input class="form-control" type="password" th:field="*{password}" />
 </div>
 <div class="form-group">
-    <label for="verify">Verify Password: </label>
-    <input class="form-control" type="password" name="verify" id="verify" />
+    <label th:for="verify">Verify Password: </label>
+    <input class="form-control" type="password" th:field="*{verify}" />
 </div>
 <div>
     <input type="submit" value="Sign Up" />

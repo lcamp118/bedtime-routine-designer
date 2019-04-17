@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class User {
+public class RoutineUser {
 
     @GeneratedValue
     @Id
@@ -23,17 +23,17 @@ public class User {
 
     @NotNull
     @Size(min=3, max=15)
-    private String email;
+    private String username;
 
     @NotNull
     @Size(min=8, max=15)
     private String password;
     private String verify;
 
-    public User(String firstName, String lastName, String email, String password, String verify) {
+    public RoutineUser(String firstName, String lastName, String email, String password, String verify) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.username = username;
         this.password = password;
         this.verify = verify;
     }
@@ -42,7 +42,7 @@ public class User {
     @JoinColumn(name= "user_id")
     private List<Routine> routines = new ArrayList<>();
 
-    public User() {}
+    public RoutineUser() {}
 
     public int getId() {
         return id;
@@ -68,14 +68,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -90,5 +82,13 @@ public class User {
 
     public void setVerify(String verify) {
         this.verify = verify;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

@@ -1,6 +1,6 @@
 package com.lynelleherrera.bedtimeroutinedesigner.Controllers;
 
-import com.lynelleherrera.bedtimeroutinedesigner.Models.User;
+import com.lynelleherrera.bedtimeroutinedesigner.Models.RoutineUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,12 +24,12 @@ public class UserController {
 
     @RequestMapping(value="user/signup", method=RequestMethod.GET)
     public String displayAddUserForm(Model model){
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new RoutineUser());
         return "user/signup";
     }
 
-    @RequestMapping(value="user/signup", method=RequestMethod.POST)
-    public String processAddUserForm(Model model, @ModelAttribute User user, String verify){
+    @RequestMapping(value="routineUser/signup", method=RequestMethod.POST)
+    public String processAddUserForm(Model model, @ModelAttribute RoutineUser routineUser, String verify){
         //TODO add validation annotations
         return "routine/index"; }
 
@@ -38,8 +38,8 @@ public class UserController {
         return "user/signin";
     }
 
-    @RequestMapping(value="user/signin", method=RequestMethod.POST)
-    public String processUserSignin(Model model, @ModelAttribute User user, String verify){
+    @RequestMapping(value="routineUser/signin", method=RequestMethod.POST)
+    public String processUserSignin(Model model, @ModelAttribute RoutineUser routineUser, String verify){
         //TODO add validation annotations
         //if errors display sign in form again
         return "routine/index";

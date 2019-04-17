@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Title</title>
 </head>
 <body>
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<h3>Sign in | New User? Please <a href="/user/signup"> Sign Up</a></h3>
+<h3>Sign in | New User? Please <a href="/routineUser/signup"> Sign Up</a></h3>
 
 <form method="post">
     <div class="form-group">
-        <label for="userEmail">Email:</label>
-        <input class="form-control" type="email" name="userEmail" id="userEmail" />
+        <label for="username">Email:</label>
+        <input class="form-control" type="text" name="username" id="username" />
+        <!--<span th:errors="*{username}" class="error"></span>-->
     </div>
     <div>
-        <label for="userPassword">Password:</label>
-        <input class="form-control" type="password" name="userPassword" id="userPassword" />
+        <label for="password">Password:</label>
+        <input class="form-control" type="password" name="password" id="password" />
+        <!--<span th:errors="*{password}" class="error"></span>-->
     </div>
     <div>
         <input type="submit" value="Sign In" />
     </div>
 </form>
 
+<div th:if="${param.logout !=null}" class="alert alert-success"> You have been logged out. </div>
 </body>
 </html>

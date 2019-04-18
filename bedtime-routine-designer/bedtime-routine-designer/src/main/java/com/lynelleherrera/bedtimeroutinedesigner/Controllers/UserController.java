@@ -19,16 +19,16 @@ public class UserController {
 
     @RequestMapping(value="/", method=RequestMethod.POST)
     public String login(Model model) {
-        return "redirect:user/signup";
+        return "redirect:user/signin";
     }
 
     @RequestMapping(value="user/signup", method=RequestMethod.GET)
     public String displayAddUserForm(Model model){
-        model.addAttribute("user", new RoutineUser());
+        model.addAttribute("routineUser", new RoutineUser());
         return "user/signup";
     }
 
-    @RequestMapping(value="routineUser/signup", method=RequestMethod.POST)
+    @RequestMapping(value="user/signup", method=RequestMethod.POST)
     public String processAddUserForm(Model model, @ModelAttribute RoutineUser routineUser, String verify){
         //TODO add validation annotations
         return "routine/index"; }
@@ -38,7 +38,7 @@ public class UserController {
         return "user/signin";
     }
 
-    @RequestMapping(value="routineUser/signin", method=RequestMethod.POST)
+    @RequestMapping(value="user/signin", method=RequestMethod.POST)
     public String processUserSignin(Model model, @ModelAttribute RoutineUser routineUser, String verify){
         //TODO add validation annotations
         //if errors display sign in form again

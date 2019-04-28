@@ -22,19 +22,19 @@ public class Routine {
     private int bedtime;
 
     @ManyToOne
-    private RoutineUser routineUser;
+    private MyUser myUser;
 
     @ManyToMany
     private List<Activity> activities;
 
     public Routine (){ }
 
-    public RoutineUser getRoutineUser() {
-        return routineUser;
+    public MyUser getMyUser() {
+        return myUser;
     }
 
-    public void setRoutineUser(RoutineUser routineUser) {
-        this.routineUser = routineUser;
+    public void setMyUser(MyUser myUser) {
+        this.myUser = myUser;
     }
 
     private void addActivity(Activity task) {

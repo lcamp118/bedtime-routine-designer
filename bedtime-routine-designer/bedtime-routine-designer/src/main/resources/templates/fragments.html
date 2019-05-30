@@ -14,9 +14,9 @@
 
 <nav th:fragment="navigation">
     <ul class="clearfix" sec:authorize="isFullyAuthenticated()">
-        <li><a href="/">Home</a></li>
-        <li><a href="/routine/add">Add Routine</a></li>
-        <li><a href="/activity/add">Add Activity</a></li>
+        <li><a href="/routine">Home</a></li>
+        <li><a href="/routine">Routines</a></li>
+        <li><a href="/activity">Activities</a></li>
         <li><a id="navLogoutLink" th:href="@{/logout}">Logout</a></li>
     </ul>
 

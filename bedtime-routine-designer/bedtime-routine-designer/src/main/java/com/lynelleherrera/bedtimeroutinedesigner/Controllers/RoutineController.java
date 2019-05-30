@@ -1,5 +1,6 @@
 package com.lynelleherrera.bedtimeroutinedesigner.Controllers;
 
+import com.lynelleherrera.bedtimeroutinedesigner.Models.Activity;
 import com.lynelleherrera.bedtimeroutinedesigner.Models.Data.ActivityDao;
 import com.lynelleherrera.bedtimeroutinedesigner.Models.Data.RoutineDao;
 import com.lynelleherrera.bedtimeroutinedesigner.Models.Routine;
@@ -7,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -39,14 +38,17 @@ public class RoutineController {
     }
 
     @RequestMapping(value="add", method=RequestMethod.POST)
-    public String processAddRoutineForm(@ModelAttribute @Valid Routine newRoutine, Errors errors, Model model){
+    public String processAddRoutineForm(@ModelAttribute @Valid Routine newRoutine, Errors errors, Model model, @RequestParam int activityId){
         model.addAttribute("title", "Create Routine");
 
         if (errors.hasErrors()){
             model.addAttribute("title", "Add Routine");
+            model.addAttribute("activities", activityDao.findAll());
             return "routine/add";
         }
 
+        Activity activity = activityDao.findOne(activityId);
+        newRoutine.addActivity(activity);
         routineDao.save(newRoutine);
 
         return "redirect:";

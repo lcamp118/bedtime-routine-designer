@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,9 +26,14 @@ public class Routine {
     private MyUser myUser;
 
     @ManyToMany
-    private List<Activity> activities;
+    private List<Activity> activities = new ArrayList<>();
 
     public Routine (){ }
+
+    public Routine(String title, int bedtime) {
+        this.title = title;
+        this.bedtime = bedtime;
+    }
 
     public MyUser getMyUser() {
         return myUser;
@@ -37,8 +43,8 @@ public class Routine {
         this.myUser = myUser;
     }
 
-    private void addActivity(Activity task) {
-        activities.add(task);
+    public void addActivity(Activity activity) {
+        this.activities.add(activity);
     }
 
     public int getBedtime() {

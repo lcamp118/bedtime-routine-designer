@@ -18,13 +18,13 @@
     </tr>
 
     <tr th:each="routine : ${routines}">
-        <td th:text="${routine.title}"></td>
+        <td><a th:href="'/activity/routine/' + ${routine.id}" th:text="${routine.title}"></a></td>
     </tr>
 
 </table>
 
-<a href="/routine/add">Add</a> |
-<a href="/routine/remove">Remove</a>
+<a href="/routine/add">Add</a>
+<!--<a href="/routine/remove">Remove</a>-->
 
 </body>
 </html>

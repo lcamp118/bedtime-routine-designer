@@ -24,17 +24,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/resources/**", "/", "/user/*", "/logout/*").permitAll()
-                .antMatchers("/routines/*", "/activity/*").hasAuthority("USER")
+                .antMatchers("/routines/**", "/activity/**").hasAuthority("USER")
                 .antMatchers("/**").hasAuthority("USER")
 
                 .and()
                 .formLogin()
                 .loginPage("/user/signin")
-                .loginProcessingUrl("/user/signin")
-                .failureUrl("/user/signin?error")
+               .loginProcessingUrl("/user/signin")
+//                .failureUrl("/user/signin?error")
 //                .usernameParameter("username")
 //                .passwordParameter("password")
-                .defaultSuccessUrl("/routine/index")
+                .defaultSuccessUrl("/routine",true)
                 .permitAll()
 
                 .and()
@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/signin")
+                .logoutSuccessUrl("/")
 
                 .and()
                 .csrf()

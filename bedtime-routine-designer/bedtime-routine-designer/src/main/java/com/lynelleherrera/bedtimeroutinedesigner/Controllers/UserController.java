@@ -39,11 +39,11 @@ public class UserController {
     public String landingPage (Model model) {
         return "index";
     }
-//
-//    @RequestMapping(value="/", method=RequestMethod.POST)
-//    public String login(Model model) {
-//        return "redirect:user/signin";
-//    }
+
+    @RequestMapping(value="/", method=RequestMethod.POST)
+    public String login(Model model) {
+        return "redirect:routine";
+    }
 
 
 
@@ -59,7 +59,7 @@ public class UserController {
         if (myUserDao.findByUsername(myUser.getUsername()) !=null){
 
             model.addAttribute("title","Sign Up");
-            return "user/signup";
+            return "redirect:routine/index";
         }
 
         if (errors.hasErrors()){
@@ -79,11 +79,11 @@ public class UserController {
         myUser.setPassword(myUser.getPassword());
         myUserDao.save(myUser);
 
-        return "routine/index"; }
+        return "redirect:routine/index"; }
 
 
 
-    @RequestMapping(value="user/signin", method=RequestMethod.GET)
+    @RequestMapping(value="user/signin")
     public String displayUserSignin(Model model){
         return "user/signin";
     }

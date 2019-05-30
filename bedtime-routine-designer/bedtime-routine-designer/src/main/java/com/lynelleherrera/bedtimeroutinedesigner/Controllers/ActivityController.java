@@ -2,11 +2,16 @@ package com.lynelleherrera.bedtimeroutinedesigner.Controllers;
 
 import com.lynelleherrera.bedtimeroutinedesigner.Models.Activity;
 import com.lynelleherrera.bedtimeroutinedesigner.Models.Data.ActivityDao;
+import com.lynelleherrera.bedtimeroutinedesigner.Models.Data.MyUserDao;
+import com.lynelleherrera.bedtimeroutinedesigner.Models.Data.RoutineDao;
+import com.lynelleherrera.bedtimeroutinedesigner.Models.MyUser;
+import com.lynelleherrera.bedtimeroutinedesigner.Models.Routine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,7 +24,11 @@ public class ActivityController {
     @Autowired
     private ActivityDao activityDao;
 
+    @Autowired
+    private MyUserDao myUserDao;
 
+    @Autowired
+    private RoutineDao routineDao;
 
     @RequestMapping(value="/", method= RequestMethod.GET)
     public String displayActivities(Model model){
@@ -47,6 +56,20 @@ public class ActivityController {
         activityDao.save(newActivity);
 
         return "redirect:";
+    }
+    @RequestMapping(value = "routine/{routineId}", method = RequestMethod.GET)
+    public String viewActivitiesinRoutine(Model model, @PathVariable int routineId) {
+
+//        MyUser currentUser = MyUser.getCurrentUser();
+//        MyUser modelUser = myUserDao.findOne(currentUser.getId());
+        Routine myRoutine = routineDao.findOne(routineId);
+
+        model.addAttribute("routine", myRoutine);
+        //model.addAttribute("modelUser", modelUser);
+        //model.addAttribute(new Activity());
+
+        return "routine/activity";
+
     }
 
 }

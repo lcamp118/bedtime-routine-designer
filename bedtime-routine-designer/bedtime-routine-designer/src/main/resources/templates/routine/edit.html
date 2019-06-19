@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" th:object="${routine}">
+    <div>
+        <label th:for="title">Title: </label>
+        <input th:value="${routine.title}" th:field="*{title}"/>
+    </div>
+    <div>
+        <label th:for="activity">Edit Activities</label>
+        <select name="activityId">
+            <option th:each="activity : ${routine.activities}"
+                    th:text="${activity.name}"
+                    th:value="${activity.id}">
+            </option>
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+
+</form>
+
+</body>
+</html>

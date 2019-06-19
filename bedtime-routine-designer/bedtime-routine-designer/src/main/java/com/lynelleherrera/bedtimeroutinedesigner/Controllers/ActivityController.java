@@ -72,4 +72,21 @@ public class ActivityController {
 
     }
 
+    @RequestMapping(value="routine/edit/{routineId}", method = RequestMethod.GET)
+    public String viewEditRoutineForm(Model model, @PathVariable int routineId){
+
+        Routine myRoutine = routineDao.findOne(routineId);
+        model.addAttribute("routine", myRoutine);
+        return "routine/edit";
+
+    }
+
+    @RequestMapping(value="edit", method=RequestMethod.POST)
+    public String processEditRoutineForm(Model model){
+        //#TODO fill this out to grab info from form and save over db object
+        return "routine/edit";
+    }
+
+    //#TODO fix file path so that routine activities show through the routine controller
+
 }

@@ -10,9 +10,15 @@
 
 <!-- <p th:unless="${routine.activities.size()}">No activities yet.</p> -->
 
-<ul>
-    <li th:each="activity : ${routine.activities}" th:text="${activity.name}"></li>
+<ul><li th:each="activity : ${routine.activities}" th:text="${activity.name}"></li> | <a th:href="'edit/' + ${routine.id}">Edit</a>
 </ul>
+
+<!--fix this. shows the bullet point but not the value of the bedtime
+<ul>
+    <li th:text="${bedtime}"></li>
+</ul>-->
+
+
 
 </body>
 </html>

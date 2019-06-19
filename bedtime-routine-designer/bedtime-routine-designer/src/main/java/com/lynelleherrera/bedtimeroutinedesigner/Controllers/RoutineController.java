@@ -52,6 +52,7 @@ public class RoutineController {
         routineDao.save(newRoutine);
 
         return "redirect:";
+
     }
 
     //#TODO add delete functionality

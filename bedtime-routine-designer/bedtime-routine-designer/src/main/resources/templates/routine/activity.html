@@ -10,9 +10,13 @@
 
 <!-- <p th:unless="${routine.activities.size()}">No activities yet.</p> -->
 
+<h2 th:text="${routine.title}"></h2>
 <ul>
     <li th:each="activity : ${routine.activities}" th:text="${activity.name}"></li>
 </ul>
+<p> Bedtime starts at <span th:text="${routine.bedtime}"></span> pm.</p>
+
+<a href="/routine/edit">Edit</a>
 
 </body>
 </html>

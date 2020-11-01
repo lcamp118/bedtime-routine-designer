@@ -54,6 +54,29 @@ public class RoutineController {
         return "redirect:";
     }
 
-    //#TODO add delete functionality
+    @RequestMapping(value="delete", method=RequestMethod.GET)
+    public String displayDeleteRoutineForm(Model model) {
+        model.addAttribute("title", "Delete Routines");
+        model.addAttribute("routines", routineDao.findAll());
+        return "routine/delete";
+    }
 
+    @RequestMapping(value="delete", method=RequestMethod.POST)
+    public String processDeleteRoutineForm(@RequestParam(required = false) int[] routineIds){
+        if (routineIds != null) {
+            for (int id : routineIds) {
+                routineDao.delete(id);
+            }
+        }
+
+        return "redirect:";
+    }
+
+    //@RequestMapping(value="edit", method=RequestMethod.GET)
+    //public String displayEditRoutineForm(Model model) {
+    //    model.addAttribute("title", "Edit Routine");
+    //    model.addAttribute(new Routine());
+    //    model.addAttribute("activities", activityDao.findAll());
+     //   return "routine/edit";
+    //}
 }

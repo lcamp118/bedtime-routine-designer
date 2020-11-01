@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: navigation"></header>
+
+<form method="post">
+
+        <table>
+            <tr th:each="routine : ${routines}">
+                <td th:text="${routine.title}"></td>
+                <td><input type="checkbox" name="routineIds" th:value="${routine.id}" /> </td>
+            </tr>
+        </table>
+
+    <input type="submit" value="Delete" />
+</form>
 
 </body>
 </html>
